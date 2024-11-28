@@ -15,40 +15,6 @@ class WasteTypeController extends Controller
      */
     public function index(Request $request)
     {
-        // $wasteTypes = WasteType::all(['waste_types_id', 'type_name']);
-        // return response()->json([
-        //     'success' => true,
-        //     'data' => $wasteTypes,
-        // ], 200);
-
-        // try {
-        //     $wasteTypes = WasteType::all(['waste_types_id', 'type_name']);
-        //     return response()->json([
-        //         'success' => true,
-        //         'data' => $wasteTypes,
-        //     ], 200);
-        // } catch (\Exception $e) {
-        //     return response()->json([
-        //         'success' => false,
-        //         'message' => $e->getMessage(),
-        //     ], 500);
-        // }
-
-        // Mengambil semua data dari tabel waste_types
-        // $wasteTypes = WasteType::all();
-
-        // $query = WasteType::query();
-
-        // // Filter berdasarkan `type_name` (jika ada parameter query)
-        // if ($request->has('type_name')) {
-        //     $query->where('type_name', $request->type_name);
-        // }
-    
-        // // Tampilkan data
-        // $wasteTypes = $query->get(
-
-        // );
-    // Ambil parameter query 'type_name' jika ada
     $typeName = $request->query('type_name');
 
     // Query untuk mengambil data waste types
@@ -84,15 +50,6 @@ class WasteTypeController extends Controller
      */
     public function show(string $id)
     {
-        // $wasteTypeDetails = WasteTypeDetail::where('waste_types_id', $id)->first();
-
-        // if (!$wasteTypeDetails) {
-        //     return response()->json([
-        //         'success' => false,
-        //         'message' => 'Waste type details not found',
-        //     ], 404);
-        // }
-
             // Ambil data detail berdasarkan waste_types_id
             // $details = WasteTypeDetail::where('waste_types_id', $id)->get();
         // Ambil data dengan kolom yang diperlukan menggunakan join
@@ -107,17 +64,14 @@ class WasteTypeController extends Controller
             ]);
             // Jika tidak ada data
             if ($details->isEmpty()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Details not found for the given waste type ID.',
-                ], 404);
+                return ApiFormatter::createApi(404,'waste type ID not found',$details);
+                // return response()->json([
+                //     'success' => false,
+                //     'message' => 'Details not found for the given waste type ID.',
+                // ], 404);
             }
-    
             // Jika data ditemukan
-            return response()->json([
-                'success' => true,
-                'data' => $details,
-            ], 200);
+            return ApiFormatter::createApi(200,'success',$details);
     }
 
     /**

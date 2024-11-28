@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             WasteTypesSeeder::class,
             WasteTypeDetailSeeder::class,
+            MaterialSeeder::class,
+            QuizSeeder::class,
         ]);
         
     }
