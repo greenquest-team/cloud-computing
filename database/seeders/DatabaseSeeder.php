@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             WasteTypeDetailSeeder::class,
             MaterialSeeder::class,
             QuizSeeder::class,
+            QuestSeeder::class,
         ]);
         
     }

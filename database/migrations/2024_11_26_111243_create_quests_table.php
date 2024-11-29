@@ -11,7 +11,8 @@ class CreateQuestsTable extends Migration
         Schema::create('quests', function (Blueprint $table) {
             $table->id();
             $table->foreignId('waste_types_id')->constrained('waste_types')->onDelete('cascade');
-            $table->string('description');
+            $table->string('description_quest');
+            $table->enum('quest_type', ['reminder', 'scan', 'material', 'quiz']);
             $table->timestamps();
         });
     }

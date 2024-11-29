@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\WasteTypeController;
 use App\Http\Controllers\Api\MaterialController;
+use App\Http\Controllers\Api\QuestController;
 use App\Http\Controllers\API\QuizController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -10,8 +11,8 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+// Route waste-types
 Route::get('/waste-types', [WasteTypeController::class, 'index']);
-
 Route::get('/waste-types/{id}', [WasteTypeController::class, 'show']);
 
 // Route Material
@@ -22,3 +23,9 @@ Route::get('/materials/{id}', [MaterialController::class, 'show']);
 Route::get('/quizzes', [QuizController::class, 'index']);
 Route::get('/quizzes/{id}', [QuizController::class, 'getQuiz']);
 Route::post('/quizzes/submit', [QuizController::class, 'checkAnswer']);
+
+// Route quest
+Route::get('/quests', [QuestController::class,'index']);
+// Route::get('/quests', [QuestController::class,'getQuestsByType']);
+Route::post('/quests', [QuestController::class, 'store']);
+Route::get('/quests/random', [QuestController::class, 'getRandomQuests']);
