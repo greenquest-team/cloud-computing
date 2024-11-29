@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8cc81576cc05829a736944b6e12300c1",
+    "content-hash": "f60f8b6e279e6de64f92f6b9fb420141",
     "packages": [
         {
             "name": "brick/math",
@@ -511,69 +511,6 @@
             "time": "2023-10-06T06:47:41+00:00"
         },
         {
-            "name": "firebase/php-jwt",
-            "version": "v6.10.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/firebase/php-jwt.git",
-                "reference": "30c19ed0f3264cb660ea496895cfb6ef7ee3653b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/30c19ed0f3264cb660ea496895cfb6ef7ee3653b",
-                "reference": "30c19ed0f3264cb660ea496895cfb6ef7ee3653b",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.0"
-            },
-            "require-dev": {
-                "guzzlehttp/guzzle": "^7.4",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.5",
-                "psr/cache": "^2.0||^3.0",
-                "psr/http-client": "^1.0",
-                "psr/http-factory": "^1.0"
-            },
-            "suggest": {
-                "ext-sodium": "Support EdDSA (Ed25519) signatures",
-                "paragonie/sodium_compat": "Support EdDSA (Ed25519) signatures when libsodium is not present"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Firebase\\JWT\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Neuman Vong",
-                    "email": "neuman+pear@twilio.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Anant Narayanan",
-                    "email": "anant@php.net",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
-            "homepage": "https://github.com/firebase/php-jwt",
-            "keywords": [
-                "jwt",
-                "php"
-            ],
-            "support": {
-                "issues": "https://github.com/firebase/php-jwt/issues",
-                "source": "https://github.com/firebase/php-jwt/tree/v6.10.2"
-            },
-            "time": "2024-11-24T11:22:49+00:00"
-        },
-        {
             "name": "fruitcake/php-cors",
             "version": "v1.3.0",
             "source": {
@@ -645,438 +582,6 @@
             "time": "2023-10-12T05:21:21+00:00"
         },
         {
-            "name": "google/auth",
-            "version": "v1.43.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/googleapis/google-auth-library-php.git",
-                "reference": "b6a80acd906492086db59aada9196dcfb9c512fe"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/b6a80acd906492086db59aada9196dcfb9c512fe",
-                "reference": "b6a80acd906492086db59aada9196dcfb9c512fe",
-                "shasum": ""
-            },
-            "require": {
-                "firebase/php-jwt": "^6.0",
-                "guzzlehttp/guzzle": "^7.4.5",
-                "guzzlehttp/psr7": "^2.4.5",
-                "php": "^8.1",
-                "psr/cache": "^2.0||^3.0",
-                "psr/http-message": "^1.1||^2.0"
-            },
-            "require-dev": {
-                "guzzlehttp/promises": "^2.0",
-                "kelvinmo/simplejwt": "0.7.1",
-                "phpseclib/phpseclib": "^3.0.35",
-                "phpspec/prophecy-phpunit": "^2.1",
-                "phpunit/phpunit": "^9.6",
-                "sebastian/comparator": ">=1.2.3",
-                "squizlabs/php_codesniffer": "^3.5",
-                "symfony/process": "^6.0||^7.0",
-                "webmozart/assert": "^1.11"
-            },
-            "suggest": {
-                "phpseclib/phpseclib": "May be used in place of OpenSSL for signing strings or for token management. Please require version ^2."
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Google\\Auth\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "Google Auth Library for PHP",
-            "homepage": "http://github.com/google/google-auth-library-php",
-            "keywords": [
-                "Authentication",
-                "google",
-                "oauth2"
-            ],
-            "support": {
-                "docs": "https://googleapis.github.io/google-auth-library-php/main/",
-                "issues": "https://github.com/googleapis/google-auth-library-php/issues",
-                "source": "https://github.com/googleapis/google-auth-library-php/tree/v1.43.0"
-            },
-            "time": "2024-11-07T19:35:20+00:00"
-        },
-        {
-            "name": "google/cloud-core",
-            "version": "v1.60.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/googleapis/google-cloud-php-core.git",
-                "reference": "7d63ba4295b799dc63227b6c9daf9dc207650eb4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-cloud-php-core/zipball/7d63ba4295b799dc63227b6c9daf9dc207650eb4",
-                "reference": "7d63ba4295b799dc63227b6c9daf9dc207650eb4",
-                "shasum": ""
-            },
-            "require": {
-                "google/auth": "^1.34",
-                "google/gax": "^1.34.0",
-                "guzzlehttp/guzzle": "^6.5.8|^7.4.4",
-                "guzzlehttp/promises": "^1.4||^2.0",
-                "guzzlehttp/psr7": "^2.6",
-                "monolog/monolog": "^2.9|^3.0",
-                "php": "^8.0",
-                "psr/http-message": "^1.0|^2.0",
-                "rize/uri-template": "~0.3"
-            },
-            "require-dev": {
-                "erusev/parsedown": "^1.6",
-                "google/cloud-common-protos": "~0.5",
-                "opis/closure": "^3",
-                "phpdocumentor/reflection": "^5.3.3",
-                "phpdocumentor/reflection-docblock": "^5.3",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.0",
-                "squizlabs/php_codesniffer": "2.*"
-            },
-            "suggest": {
-                "opis/closure": "May be used to serialize closures to process jobs in the batch daemon. Please require version ^3.",
-                "symfony/lock": "Required for the Spanner cached based session pool. Please require the following commit: 3.3.x-dev#1ba6ac9"
-            },
-            "bin": [
-                "bin/google-cloud-batch"
-            ],
-            "type": "library",
-            "extra": {
-                "component": {
-                    "id": "cloud-core",
-                    "target": "googleapis/google-cloud-php-core.git",
-                    "path": "Core",
-                    "entry": "src/ServiceBuilder.php"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Google\\Cloud\\Core\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "Google Cloud PHP shared dependency, providing functionality useful to all components.",
-            "support": {
-                "source": "https://github.com/googleapis/google-cloud-php-core/tree/v1.60.0"
-            },
-            "time": "2024-09-28T04:24:22+00:00"
-        },
-        {
-            "name": "google/cloud-storage",
-            "version": "v1.44.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/googleapis/google-cloud-php-storage.git",
-                "reference": "ebdec855364c1df9e81755e9626e3ff4687263f4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-cloud-php-storage/zipball/ebdec855364c1df9e81755e9626e3ff4687263f4",
-                "reference": "ebdec855364c1df9e81755e9626e3ff4687263f4",
-                "shasum": ""
-            },
-            "require": {
-                "google/cloud-core": "^1.55",
-                "php": "^8.0",
-                "ramsey/uuid": "^4.2.3"
-            },
-            "require-dev": {
-                "erusev/parsedown": "^1.6",
-                "google/cloud-pubsub": "^2.0",
-                "phpdocumentor/reflection": "^5.3.3",
-                "phpdocumentor/reflection-docblock": "^5.3",
-                "phpseclib/phpseclib": "^2.0||^3.0",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.0",
-                "squizlabs/php_codesniffer": "2.*"
-            },
-            "suggest": {
-                "google/cloud-pubsub": "May be used to register a topic to receive bucket notifications.",
-                "phpseclib/phpseclib": "May be used in place of OpenSSL for creating signed Cloud Storage URLs. Please require version ^2."
-            },
-            "type": "library",
-            "extra": {
-                "component": {
-                    "id": "cloud-storage",
-                    "target": "googleapis/google-cloud-php-storage.git",
-                    "path": "Storage",
-                    "entry": "src/StorageClient.php"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Google\\Cloud\\Storage\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "Cloud Storage Client for PHP",
-            "support": {
-                "source": "https://github.com/googleapis/google-cloud-php-storage/tree/v1.44.0"
-            },
-            "time": "2024-11-01T19:34:13+00:00"
-        },
-        {
-            "name": "google/common-protos",
-            "version": "4.8.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/googleapis/common-protos-php.git",
-                "reference": "38a9a8bb459fa618da797d25d7bf36bb21d1103d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/common-protos-php/zipball/38a9a8bb459fa618da797d25d7bf36bb21d1103d",
-                "reference": "38a9a8bb459fa618da797d25d7bf36bb21d1103d",
-                "shasum": ""
-            },
-            "require": {
-                "google/protobuf": "^v3.25.3||^4.26.1",
-                "php": "^8.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.6"
-            },
-            "type": "library",
-            "extra": {
-                "component": {
-                    "id": "common-protos",
-                    "target": "googleapis/common-protos-php.git",
-                    "path": "CommonProtos",
-                    "entry": "README.md"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Google\\Api\\": "src/Api",
-                    "Google\\Iam\\": "src/Iam",
-                    "Google\\Rpc\\": "src/Rpc",
-                    "Google\\Type\\": "src/Type",
-                    "Google\\Cloud\\": "src/Cloud",
-                    "GPBMetadata\\Google\\Api\\": "metadata/Api",
-                    "GPBMetadata\\Google\\Iam\\": "metadata/Iam",
-                    "GPBMetadata\\Google\\Rpc\\": "metadata/Rpc",
-                    "GPBMetadata\\Google\\Type\\": "metadata/Type",
-                    "GPBMetadata\\Google\\Cloud\\": "metadata/Cloud",
-                    "GPBMetadata\\Google\\Logging\\": "metadata/Logging"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "Google API Common Protos for PHP",
-            "homepage": "https://github.com/googleapis/common-protos-php",
-            "keywords": [
-                "google"
-            ],
-            "support": {
-                "source": "https://github.com/googleapis/common-protos-php/tree/v4.8.3"
-            },
-            "time": "2024-09-07T01:37:15+00:00"
-        },
-        {
-            "name": "google/gax",
-            "version": "v1.35.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/googleapis/gax-php.git",
-                "reference": "21d038043e50498c42f8f060ab2d6949066480f3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/gax-php/zipball/21d038043e50498c42f8f060ab2d6949066480f3",
-                "reference": "21d038043e50498c42f8f060ab2d6949066480f3",
-                "shasum": ""
-            },
-            "require": {
-                "google/auth": "^1.34.0",
-                "google/common-protos": "^4.4",
-                "google/grpc-gcp": "^0.4",
-                "google/longrunning": "~0.4",
-                "google/protobuf": "^v3.25.3||^4.26.1",
-                "grpc/grpc": "^1.13",
-                "guzzlehttp/promises": "^2.0",
-                "guzzlehttp/psr7": "^2.0",
-                "php": "^8.0",
-                "ramsey/uuid": "^4.0"
-            },
-            "conflict": {
-                "ext-protobuf": "<3.7.0"
-            },
-            "require-dev": {
-                "phpspec/prophecy-phpunit": "^2.1",
-                "phpstan/phpstan": "^1.10",
-                "phpunit/phpunit": "^9.6",
-                "squizlabs/php_codesniffer": "3.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Google\\ApiCore\\": "src",
-                    "GPBMetadata\\ApiCore\\": "metadata/ApiCore"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Google API Core for PHP",
-            "homepage": "https://github.com/googleapis/gax-php",
-            "keywords": [
-                "google"
-            ],
-            "support": {
-                "issues": "https://github.com/googleapis/gax-php/issues",
-                "source": "https://github.com/googleapis/gax-php/tree/v1.35.0"
-            },
-            "time": "2024-11-06T20:27:21+00:00"
-        },
-        {
-            "name": "google/grpc-gcp",
-            "version": "v0.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GoogleCloudPlatform/grpc-gcp-php.git",
-                "reference": "2a80dbf690922aa52bb6bb79b9a32a9637a5c2d9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GoogleCloudPlatform/grpc-gcp-php/zipball/2a80dbf690922aa52bb6bb79b9a32a9637a5c2d9",
-                "reference": "2a80dbf690922aa52bb6bb79b9a32a9637a5c2d9",
-                "shasum": ""
-            },
-            "require": {
-                "google/auth": "^1.3",
-                "google/protobuf": "^v3.25.3||^4.26.1",
-                "grpc/grpc": "^v1.13.0",
-                "php": "^8.0",
-                "psr/cache": "^1.0.1||^2.0.0||^3.0.0"
-            },
-            "require-dev": {
-                "google/cloud-spanner": "^1.7",
-                "phpunit/phpunit": "^9.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Grpc\\Gcp\\": "src/"
-                },
-                "classmap": [
-                    "src/generated/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "gRPC GCP library for channel management",
-            "support": {
-                "issues": "https://github.com/GoogleCloudPlatform/grpc-gcp-php/issues",
-                "source": "https://github.com/GoogleCloudPlatform/grpc-gcp-php/tree/v0.4.0"
-            },
-            "time": "2024-04-03T16:37:55+00:00"
-        },
-        {
-            "name": "google/longrunning",
-            "version": "0.4.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/googleapis/php-longrunning.git",
-                "reference": "062eab0f3b9310da9498bfe20b273f074580b916"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/php-longrunning/zipball/062eab0f3b9310da9498bfe20b273f074580b916",
-                "reference": "062eab0f3b9310da9498bfe20b273f074580b916",
-                "shasum": ""
-            },
-            "require-dev": {
-                "google/gax": "^1.34.0",
-                "phpunit/phpunit": "^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "component": {
-                    "id": "longrunning",
-                    "path": "LongRunning",
-                    "entry": null,
-                    "target": "googleapis/php-longrunning"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Google\\LongRunning\\": "src/LongRunning",
-                    "Google\\ApiCore\\LongRunning\\": "src/ApiCore/LongRunning",
-                    "GPBMetadata\\Google\\Longrunning\\": "metadata/Longrunning"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "Google LongRunning Client for PHP",
-            "support": {
-                "source": "https://github.com/googleapis/php-longrunning/tree/v0.4.5"
-            },
-            "time": "2024-11-16T00:28:46+00:00"
-        },
-        {
-            "name": "google/protobuf",
-            "version": "v4.28.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/protocolbuffers/protobuf-php.git",
-                "reference": "c5c311e0f3d89928251ac5a2f0e3db283612c100"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/c5c311e0f3d89928251ac5a2f0e3db283612c100",
-                "reference": "c5c311e0f3d89928251ac5a2f0e3db283612c100",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": ">=5.0.0"
-            },
-            "suggest": {
-                "ext-bcmath": "Need to support JSON deserialization"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Google\\Protobuf\\": "src/Google/Protobuf",
-                    "GPBMetadata\\Google\\Protobuf\\": "src/GPBMetadata/Google/Protobuf"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "proto library for PHP",
-            "homepage": "https://developers.google.com/protocol-buffers/",
-            "keywords": [
-                "proto"
-            ],
-            "support": {
-                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v4.28.3"
-            },
-            "time": "2024-10-22T22:27:17+00:00"
-        },
-        {
             "name": "graham-campbell/result-type",
             "version": "v1.1.3",
             "source": {
@@ -1137,50 +642,6 @@
                 }
             ],
             "time": "2024-07-20T21:45:45+00:00"
-        },
-        {
-            "name": "grpc/grpc",
-            "version": "1.57.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/grpc/grpc-php.git",
-                "reference": "b610c42022ed3a22f831439cb93802f2a4502fdf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/grpc/grpc-php/zipball/b610c42022ed3a22f831439cb93802f2a4502fdf",
-                "reference": "b610c42022ed3a22f831439cb93802f2a4502fdf",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0.0"
-            },
-            "require-dev": {
-                "google/auth": "^v1.3.0"
-            },
-            "suggest": {
-                "ext-protobuf": "For better performance, install the protobuf C extension.",
-                "google/protobuf": "To get started using grpc quickly, install the native protobuf library."
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Grpc\\": "src/lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "gRPC library for PHP",
-            "homepage": "https://grpc.io",
-            "keywords": [
-                "rpc"
-            ],
-            "support": {
-                "source": "https://github.com/grpc/grpc-php/tree/v1.57.0"
-            },
-            "time": "2023-08-14T23:57:54+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1595,23 +1056,23 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v11.33.2",
+            "version": "v11.34.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "6b9832751cf8eed18b3c73df5071f78f0682aa5d"
+                "reference": "858184e8def3f20f588f9ab88355003750845a6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/6b9832751cf8eed18b3c73df5071f78f0682aa5d",
-                "reference": "6b9832751cf8eed18b3c73df5071f78f0682aa5d",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/858184e8def3f20f588f9ab88355003750845a6c",
+                "reference": "858184e8def3f20f588f9ab88355003750845a6c",
                 "shasum": ""
             },
             "require": {
                 "brick/math": "^0.9.3|^0.10.2|^0.11|^0.12",
                 "composer-runtime-api": "^2.2",
                 "doctrine/inflector": "^2.0.5",
-                "dragonmantank/cron-expression": "^3.3.2",
+                "dragonmantank/cron-expression": "^3.4",
                 "egulias/email-validator": "^3.2.1|^4.0",
                 "ext-ctype": "*",
                 "ext-filter": "*",
@@ -1621,35 +1082,36 @@
                 "ext-session": "*",
                 "ext-tokenizer": "*",
                 "fruitcake/php-cors": "^1.3",
-                "guzzlehttp/guzzle": "^7.8",
+                "guzzlehttp/guzzle": "^7.8.2",
                 "guzzlehttp/uri-template": "^1.0",
                 "laravel/prompts": "^0.1.18|^0.2.0|^0.3.0",
                 "laravel/serializable-closure": "^1.3|^2.0",
                 "league/commonmark": "^2.2.1",
-                "league/flysystem": "^3.8.0",
+                "league/flysystem": "^3.25.1",
+                "league/flysystem-local": "^3.25.1",
                 "monolog/monolog": "^3.0",
-                "nesbot/carbon": "^2.72.2|^3.0",
+                "nesbot/carbon": "^2.72.2|^3.4",
                 "nunomaduro/termwind": "^2.0",
                 "php": "^8.2",
                 "psr/container": "^1.1.1|^2.0.1",
                 "psr/log": "^1.0|^2.0|^3.0",
                 "psr/simple-cache": "^1.0|^2.0|^3.0",
                 "ramsey/uuid": "^4.7",
-                "symfony/console": "^7.0",
-                "symfony/error-handler": "^7.0",
-                "symfony/finder": "^7.0",
-                "symfony/http-foundation": "^7.0",
-                "symfony/http-kernel": "^7.0",
-                "symfony/mailer": "^7.0",
-                "symfony/mime": "^7.0",
-                "symfony/polyfill-php83": "^1.28",
-                "symfony/process": "^7.0",
-                "symfony/routing": "^7.0",
-                "symfony/uid": "^7.0",
-                "symfony/var-dumper": "^7.0",
+                "symfony/console": "^7.0.3",
+                "symfony/error-handler": "^7.0.3",
+                "symfony/finder": "^7.0.3",
+                "symfony/http-foundation": "^7.0.3",
+                "symfony/http-kernel": "^7.0.3",
+                "symfony/mailer": "^7.0.3",
+                "symfony/mime": "^7.0.3",
+                "symfony/polyfill-php83": "^1.31",
+                "symfony/process": "^7.0.3",
+                "symfony/routing": "^7.0.3",
+                "symfony/uid": "^7.0.3",
+                "symfony/var-dumper": "^7.0.3",
                 "tijsverkoyen/css-to-inline-styles": "^2.2.5",
-                "vlucas/phpdotenv": "^5.4.1",
-                "voku/portable-ascii": "^2.0"
+                "vlucas/phpdotenv": "^5.6.1",
+                "voku/portable-ascii": "^2.0.2"
             },
             "conflict": {
                 "mockery/mockery": "1.6.8",
@@ -1699,29 +1161,32 @@
             },
             "require-dev": {
                 "ably/ably-php": "^1.0",
-                "aws/aws-sdk-php": "^3.235.5",
+                "aws/aws-sdk-php": "^3.322.9",
                 "ext-gmp": "*",
-                "fakerphp/faker": "^1.23",
-                "league/flysystem-aws-s3-v3": "^3.0",
-                "league/flysystem-ftp": "^3.0",
-                "league/flysystem-path-prefixing": "^3.3",
-                "league/flysystem-read-only": "^3.3",
-                "league/flysystem-sftp-v3": "^3.0",
+                "fakerphp/faker": "^1.24",
+                "guzzlehttp/promises": "^2.0.3",
+                "guzzlehttp/psr7": "^2.4",
+                "league/flysystem-aws-s3-v3": "^3.25.1",
+                "league/flysystem-ftp": "^3.25.1",
+                "league/flysystem-path-prefixing": "^3.25.1",
+                "league/flysystem-read-only": "^3.25.1",
+                "league/flysystem-sftp-v3": "^3.25.1",
                 "mockery/mockery": "^1.6.10",
                 "nyholm/psr7": "^1.2",
                 "orchestra/testbench-core": "^9.6",
-                "pda/pheanstalk": "^5.0",
+                "pda/pheanstalk": "^5.0.6",
                 "phpstan/phpstan": "^1.11.5",
-                "phpunit/phpunit": "^10.5|^11.0",
-                "predis/predis": "^2.0.2",
+                "phpunit/phpunit": "^10.5.35|^11.3.6",
+                "predis/predis": "^2.3",
                 "resend/resend-php": "^0.10.0",
-                "symfony/cache": "^7.0",
-                "symfony/http-client": "^7.0",
-                "symfony/psr-http-message-bridge": "^7.0"
+                "symfony/cache": "^7.0.3",
+                "symfony/http-client": "^7.0.3",
+                "symfony/psr-http-message-bridge": "^7.0.3",
+                "symfony/translation": "^7.0.3"
             },
             "suggest": {
                 "ably/ably-php": "Required to use the Ably broadcast driver (^1.0).",
-                "aws/aws-sdk-php": "Required to use the SQS queue driver, DynamoDb failed job storage, and SES mail driver (^3.235.5).",
+                "aws/aws-sdk-php": "Required to use the SQS queue driver, DynamoDb failed job storage, and SES mail driver (^3.322.9).",
                 "brianium/paratest": "Required to run tests in parallel (^7.0|^8.0).",
                 "ext-apcu": "Required to use the APC cache driver.",
                 "ext-fileinfo": "Required to use the Filesystem class.",
@@ -1735,16 +1200,16 @@
                 "fakerphp/faker": "Required to use the eloquent factory builder (^1.9.1).",
                 "filp/whoops": "Required for friendly error pages in development (^2.14.3).",
                 "laravel/tinker": "Required to use the tinker console command (^2.0).",
-                "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (^3.0).",
-                "league/flysystem-ftp": "Required to use the Flysystem FTP driver (^3.0).",
-                "league/flysystem-path-prefixing": "Required to use the scoped driver (^3.3).",
-                "league/flysystem-read-only": "Required to use read-only disks (^3.3)",
-                "league/flysystem-sftp-v3": "Required to use the Flysystem SFTP driver (^3.0).",
+                "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (^3.25.1).",
+                "league/flysystem-ftp": "Required to use the Flysystem FTP driver (^3.25.1).",
+                "league/flysystem-path-prefixing": "Required to use the scoped driver (^3.25.1).",
+                "league/flysystem-read-only": "Required to use read-only disks (^3.25.1)",
+                "league/flysystem-sftp-v3": "Required to use the Flysystem SFTP driver (^3.25.1).",
                 "mockery/mockery": "Required to use mocking (^1.6).",
                 "nyholm/psr7": "Required to use PSR-7 bridging features (^1.2).",
                 "pda/pheanstalk": "Required to use the beanstalk queue driver (^5.0).",
                 "phpunit/phpunit": "Required to use assertions and run tests (^10.5|^11.0).",
-                "predis/predis": "Required to use the predis connector (^2.0.2).",
+                "predis/predis": "Required to use the predis connector (^2.3).",
                 "psr/http-message": "Required to allow Storage::put to accept a StreamInterface (^1.0).",
                 "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (^6.0|^7.0).",
                 "resend/resend-php": "Required to enable support for the Resend mail transport (^0.10.0).",
@@ -1800,7 +1265,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-11-19T22:47:13+00:00"
+            "time": "2024-11-26T15:11:52+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -3006,55 +2471,6 @@
             "time": "2024-07-20T21:41:07+00:00"
         },
         {
-            "name": "psr/cache",
-            "version": "3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/cache.git",
-                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/cache/zipball/aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
-                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.0.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Cache\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for caching libraries",
-            "keywords": [
-                "cache",
-                "psr",
-                "psr-6"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/cache/tree/3.0.0"
-            },
-            "time": "2021-02-03T23:26:27+00:00"
-        },
-        {
             "name": "psr/clock",
             "version": "1.0.0",
             "source": {
@@ -3769,68 +3185,6 @@
                 }
             ],
             "time": "2024-04-27T21:32:50+00:00"
-        },
-        {
-            "name": "rize/uri-template",
-            "version": "0.3.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rize/UriTemplate.git",
-                "reference": "34a5b96d0b65a5dddb7d20f09b6527a43faede24"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rize/UriTemplate/zipball/34a5b96d0b65a5dddb7d20f09b6527a43faede24",
-                "reference": "34a5b96d0b65a5dddb7d20f09b6527a43faede24",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.8.36"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Rize\\": "src/Rize"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marut K",
-                    "homepage": "http://twitter.com/rezigned"
-                }
-            ],
-            "description": "PHP URI Template (RFC 6570) supports both expansion & extraction",
-            "keywords": [
-                "RFC 6570",
-                "template",
-                "uri"
-            ],
-            "support": {
-                "issues": "https://github.com/rize/UriTemplate/issues",
-                "source": "https://github.com/rize/UriTemplate/tree/0.3.8"
-            },
-            "funding": [
-                {
-                    "url": "https://www.paypal.me/rezigned",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/rezigned",
-                    "type": "github"
-                },
-                {
-                    "url": "https://opencollective.com/rize-uri-template",
-                    "type": "open_collective"
-                }
-            ],
-            "time": "2024-08-30T07:09:40+00:00"
         },
         {
             "name": "symfony/clock",
@@ -6331,16 +5685,16 @@
     "packages-dev": [
         {
             "name": "fakerphp/faker",
-            "version": "v1.24.0",
+            "version": "v1.24.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "a136842a532bac9ecd8a1c723852b09915d7db50"
+                "reference": "e0ee18eb1e6dc3cda3ce9fd97e5a0689a88a64b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/a136842a532bac9ecd8a1c723852b09915d7db50",
-                "reference": "a136842a532bac9ecd8a1c723852b09915d7db50",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/e0ee18eb1e6dc3cda3ce9fd97e5a0689a88a64b5",
+                "reference": "e0ee18eb1e6dc3cda3ce9fd97e5a0689a88a64b5",
                 "shasum": ""
             },
             "require": {
@@ -6388,9 +5742,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
-                "source": "https://github.com/FakerPHP/Faker/tree/v1.24.0"
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.24.1"
             },
-            "time": "2024-11-07T15:11:20+00:00"
+            "time": "2024-11-21T13:46:39+00:00"
         },
         {
             "name": "filp/whoops",
@@ -6594,16 +5948,16 @@
         },
         {
             "name": "laravel/pint",
-            "version": "v1.18.2",
+            "version": "v1.18.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/pint.git",
-                "reference": "f55daaf7eb6c2f49ddf6702fb42e3091c64d8a64"
+                "reference": "cef51821608239040ab841ad6e1c6ae502ae3026"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/pint/zipball/f55daaf7eb6c2f49ddf6702fb42e3091c64d8a64",
-                "reference": "f55daaf7eb6c2f49ddf6702fb42e3091c64d8a64",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/cef51821608239040ab841ad6e1c6ae502ae3026",
+                "reference": "cef51821608239040ab841ad6e1c6ae502ae3026",
                 "shasum": ""
             },
             "require": {
@@ -6614,13 +5968,13 @@
                 "php": "^8.1.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.64.0",
-                "illuminate/view": "^10.48.20",
-                "larastan/larastan": "^2.9.8",
+                "friendsofphp/php-cs-fixer": "^3.65.0",
+                "illuminate/view": "^10.48.24",
+                "larastan/larastan": "^2.9.11",
                 "laravel-zero/framework": "^10.4.0",
                 "mockery/mockery": "^1.6.12",
-                "nunomaduro/termwind": "^1.15.1",
-                "pestphp/pest": "^2.35.1"
+                "nunomaduro/termwind": "^1.17.0",
+                "pestphp/pest": "^2.36.0"
             },
             "bin": [
                 "builds/pint"
@@ -6656,20 +6010,20 @@
                 "issues": "https://github.com/laravel/pint/issues",
                 "source": "https://github.com/laravel/pint"
             },
-            "time": "2024-11-20T09:33:46+00:00"
+            "time": "2024-11-26T15:34:00+00:00"
         },
         {
             "name": "laravel/sail",
-            "version": "v1.38.0",
+            "version": "v1.39.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "d17abae06661dd6c46d13627b1683a2924259145"
+                "reference": "be9d67a11133535811f9ec4ab5c176a2f47250fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/d17abae06661dd6c46d13627b1683a2924259145",
-                "reference": "d17abae06661dd6c46d13627b1683a2924259145",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/be9d67a11133535811f9ec4ab5c176a2f47250fc",
+                "reference": "be9d67a11133535811f9ec4ab5c176a2f47250fc",
                 "shasum": ""
             },
             "require": {
@@ -6719,7 +6073,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2024-11-11T20:16:51+00:00"
+            "time": "2024-11-25T23:48:26+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -8556,5 +7910,5 @@
         "php": "^8.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.2.0"
 }

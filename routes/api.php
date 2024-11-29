@@ -6,6 +6,10 @@ use App\Http\Controllers\Api\QuestController;
 use App\Http\Controllers\API\QuizController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\Logoutontroller;
+
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -28,4 +32,13 @@ Route::post('/quizzes/submit', [QuizController::class, 'checkAnswer']);
 Route::get('/quests', [QuestController::class,'index']);
 // Route::get('/quests', [QuestController::class,'getQuestsByType']);
 Route::post('/quests', [QuestController::class, 'store']);
-Route::get('/quests/random', [QuestController::class, 'getRandomQuests']);
+Route::get('/quests/random', [QuestController::class, 'getRandomQuests']);<?php
+
+// Route auth
+Route::post('/register', RegisterController::class);
+Route::post('/login', LoginController::class);
+Route::post('/logout', LogoutController::class)->middleware('auth:sanctum');
+
+Route::get('/hello', function (){
+    return 'Hello, Laravel';
+})->middleware('auth:sanctum');
