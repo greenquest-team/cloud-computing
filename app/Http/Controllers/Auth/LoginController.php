@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; // Pastikan untuk mengimpor facade Auth
 
 class LoginController extends Controller
 {
@@ -12,7 +13,6 @@ class LoginController extends Controller
      */
     public function __invoke(Request $request)
     {
-        //
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -25,7 +25,7 @@ class LoginController extends Controller
         $user = auth()->user();
 
         return response()->json([
-            'token' => $user->createToken('apitrash')->plainTextToken
+            'token' => $user->createToken('apitrash')->plainTextToken,
         ]);
     }
 }
