@@ -31,6 +31,20 @@ return [
 
     'connections' => [
 
+        'trash-merge' => [
+            'driver' => 'mysql', // atau driver lain seperti 'pgsql', 'sqlite', 'sqlsrv'
+            'host' => env('DB_TRASH_MERGE_HOST', '127.0.0.1'),
+            'port' => env('DB_TRASH_MERGE_PORT', '3306'),
+            'database' => env('DB_TRASH_MERGE_DATABASE', 'trash_merge_db'),
+            'username' => env('DB_TRASH_MERGE_USERNAME', 'root'),
+            'password' => env('DB_TRASH_MERGE_PASSWORD', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DB_URL'),
@@ -47,7 +61,7 @@ return [
             'url' => env('DB_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'laravel'),
+            'database' => env('DB_DATABASE', 'trash-merge'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
@@ -67,7 +81,7 @@ return [
             'url' => env('DB_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'laravel'),
+            'database' => env('DB_DATABASE', 'trash-merge'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
