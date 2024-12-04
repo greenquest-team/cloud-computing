@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helper\ApiFormatter;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; // Pastikan untuk mengimpor facade Auth
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -13,19 +15,27 @@ class LoginController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        try {
+            $credentials = $request->validate([
+                'email' => 'required|email',
+                'password' => 'required',
+            ]);
 
-        if (!auth()->attempt($credentials)) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+            if (!Auth::attempt($credentials)) {
+                // return response()->json(['message' => 'Unauthorized'], 401);
+            }        
+
+            $user = Auth::user();
+            $token = $user->createToken('apitrash')->plainTextToken;
+            $data = [
+                "token" => $token,
+                "user" => $user,
+                ];
+            return ApiFormatter::createApi(200,'success',$data);
+            
+        } catch (\Exception $e) {
+            Log::error($e); // Log error untuk diagnosis lebih lanjut
+            return response()->json(['message' => 'Internal Server Error'], 500);
         }
-        
-        $user = auth()->user();
-
-        return response()->json([
-            'token' => $user->createToken('apitrash')->plainTextToken,
-        ]);
-    }
+    }    
 }

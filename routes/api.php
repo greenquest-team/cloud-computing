@@ -42,14 +42,14 @@ Route::post('/quizzes/submit', [QuizController::class, 'checkAnswer']);
 Route::get('/quests', [QuestController::class,'index']);
 // Route::get('/quests', [QuestController::class,'getQuestsByType']);
 Route::post('/quests', [QuestController::class, 'store']);
+
+
+
+
 Route::get('/quests/random', [QuestController::class, 'getRandomQuests']);
 
 
-
-Route::get('/quests/random', [QuestController::class, 'getRandomQuests']);
-
-    Route::get('/quests/random', [QuestController::class, 'getRandomQuests']);
-    Route::get('/hello', function () {
-        return 'Hello, Laravel';
-    });
+Route::get('/hello', function () {
+    return 'Hello, Laravel';
+});
 });

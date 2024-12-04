@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helper\ApiFormatter;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,10 +22,11 @@ class RegisterController extends Controller
         ]);
 
         $token = $user->createToken('apitrash')->plainTextToken;
-
-        return response()->json([
-            'user' => $user,
-            'token' => $token
-        ]);
+        
+        $data = [
+            "token" => $token,
+            "user" => $user,
+            ];
+        return ApiFormatter::createApi(200,'success',$data);
     }
 }

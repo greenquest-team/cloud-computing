@@ -12,10 +12,10 @@ class CreateUserQuestsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('quest_id')->constrained('quests')->onDelete('cascade');
-            $table->integer('progress');
-            $table->boolean('is_completed');
+            $table->integer('progress')->nullable();;
+            $table->boolean('is_completed')->nullable();;
             $table->date('completed_at')->nullable();
-            $table->integer('points_awarded');
+            $table->integer('points_awarded')->nullable();;
             $table->timestamps();
         });
     }

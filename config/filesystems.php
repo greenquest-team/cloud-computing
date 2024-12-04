@@ -32,9 +32,7 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app/private'),
-            'serve' => true,
-            'throw' => false,
+            'root' => env('STORAGE_PATH', '/tmp'),
         ],
 
         'public' => [
@@ -43,6 +41,17 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw' => false,
+        ],
+
+
+        'gcs' => [
+            'driver' => 'gcs',
+            'project_id' => env('GOOGLE_CLOUD_PROJECT_ID', 'greenquest-442806'),
+            'key_file' => env('GOOGLE_CLOUD_KEY_FILE', '/workspace/service-account.json'), // Path to service account key file
+            'bucket' => env('GOOGLE_CLOUD_STORAGE_BUCKET', 'greenquest-bucket'),
+            'path_prefix' => env('GOOGLE_CLOUD_STORAGE_PATH_PREFIX', null),
+            'storage_api_uri' => env('GOOGLE_CLOUD_STORAGE_API_URI', null), // See: Public URLs below
+            'visibility' => 'public', // optional: public|private
         ],
 
         's3' => [
