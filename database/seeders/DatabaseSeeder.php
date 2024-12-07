@@ -18,6 +18,17 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+            'points' => rand(0, 100),
+        ]);
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'ayam@example.com',
+            'points' => rand(0, 100),
+        ]);
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'bebek@example.com',
+            'points' => rand(0, 100),
         ]);
 
         $this->call([

@@ -8,13 +8,12 @@ class CreateUserQuizAnswerTable extends Migration
 {
     public function up()
     {
-        Schema::create('user_quiz_answer', function (Blueprint $table) {
+        Schema::create('user_quiz_answers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('quiz_id')->constrained('quizzes')->onDelete('cascade');
-            $table->enum('selected_answer', ['A', 'B', 'C', 'D']); // Contoh jawaban pilihan
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('quiz_id')->constrained()->onDelete('cascade');
+            $table->string('selected_answer');
             $table->boolean('is_correct');
-            $table->integer('points_awarded');
             $table->timestamps();
         });
     }

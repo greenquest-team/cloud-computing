@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helper\ApiFormatter;
 use App\Models\UserQuest;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
@@ -101,6 +103,19 @@ public function getProgressByStatus(Request $request, $userId, $status)
         'success' => true,
         'data' => $progress,
     ]);
+}
+
+public function getLeaderboard(Request $request)
+{
+    $limit = $request->get('limit', 10); // Default top 10
+    
+    // Ambil data user berdasarkan poin, urutkan dari yang terbesar
+    $leaderboard = User::select('id', 'name', 'points')
+        ->orderBy('points', 'desc')
+        ->limit($limit)
+        ->get();
+
+    return ApiFormatter::createApi(200, 'Leaderboard fetched successfully.', $leaderboard);
 }
 
 

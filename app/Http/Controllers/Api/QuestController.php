@@ -117,7 +117,7 @@ class QuestController extends Controller
         $quests = Quest::join('waste_types', 'quests.waste_types_id', '=', 'waste_types.id')
             ->where('waste_types.type_name', $typeName)
             ->inRandomOrder()
-            ->limit(2)
+            ->limit(4)
             ->get(['quests.id', 'waste_types.type_name', 'quests.description_quest', 'quests.quest_type']);
 
         if ($quests->isEmpty()) {

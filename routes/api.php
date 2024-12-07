@@ -5,11 +5,13 @@ use App\Http\Controllers\Api\MaterialController;
 use App\Http\Controllers\Api\QuestController;
 use App\Http\Controllers\API\QuizController;
 use App\Http\Controllers\Api\UserQuestController;
+use App\Http\Controllers\Api\UserQuizAnswerController as ApiUserQuizAnswerController;
 use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\UserQuizAnswerController;
 use App\Models\UserQuest;
 
 // Route::get('/user', function (Request $request) {
@@ -25,7 +27,7 @@ Route::post('/register', RegisterController::class);
 Route::post('/login', LoginController::class);
 Route::post('/logout', LogoutController::class)->middleware('auth:sanctum');
 
-// Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
 
 // Route waste-types
 Route::get('/waste-types', [WasteTypeController::class, 'index']);
@@ -52,10 +54,17 @@ Route::prefix('user-progress')->group(function () {
     Route::get('/{userId}/{status}', [UserQuestController::class, 'getProgressByStatus']);
 });
 
+Route::get('/leaderboard', [UserQuestController::class, 'getLeaderboard']);
+
+// userquizanswer
+Route::get('/user-quiz-answers', [UserQuizAnswerController::class, 'index']);
+Route::post('/user-quiz-answers', [UserQuizAnswerController::class, 'store']);
+
 Route::get('/quests/random', [QuestController::class, 'getRandomQuests']);
+
 
 
 Route::get('/hello', function () {
     return 'Hello, Laravel';
 });
-// });
+});
