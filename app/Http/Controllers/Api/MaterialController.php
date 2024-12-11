@@ -27,11 +27,14 @@ class MaterialController extends Controller
         ->when($typeName, function ($query, $typeName) {
             return $query->where('waste_types.type_name', $typeName);
         })
+        ->inRandomOrder()
+        ->limit(1)
         ->get([
             'materials.id',
             'materials.waste_types_id',
             'waste_types.type_name',
             'materials.description_mat',
+            'materials.image'
         ]);
 
     // Cek jika data kosong

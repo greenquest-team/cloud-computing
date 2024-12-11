@@ -10,10 +10,8 @@ class UserQuest extends Model
     /** @use HasFactory<\Database\Factories\UserQuestFactory> */
     use HasFactory;
 
-    protected $fillable = [
-        'progress_status',
-        'points_awarded',
-    ];
+    protected $guarded = ['id'];
+
 
     public function user()
     {

@@ -10,7 +10,7 @@ class CreateWasteTypesTable extends Migration
     {
         Schema::create('waste_types', function (Blueprint $table) {
             $table->id();
-            $table->enum('type_name', ['plastic', 'glass', 'metal', 'paper', 'organic']); // Sesuaikan dengan jenis enum
+            $table->enum('type_name', ['paper','cardboard','plastic', 'glass', 'metal', 'trash', 'reminder', 'quiz']); // Sesuaikan dengan jenis enum
             $table->timestamps();
         });
     }

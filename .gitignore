@@ -22,5 +22,5 @@ yarn-error.log
 /.vscode
 /.zed
 README.md
-service-account.json
-app.yaml
+/service-account.json
+/app.yaml

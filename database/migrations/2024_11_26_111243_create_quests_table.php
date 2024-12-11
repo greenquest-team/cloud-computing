@@ -13,6 +13,7 @@ class CreateQuestsTable extends Migration
             $table->foreignId('waste_types_id')->constrained('waste_types')->onDelete('cascade');
             $table->string('description_quest');
             $table->enum('quest_type', ['reminder', 'scan', 'material', 'quiz']);
+            $table->string('image');
             $table->timestamps();
         });
     }

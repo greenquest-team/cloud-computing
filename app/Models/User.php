@@ -16,13 +16,18 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'points',
-        'password',
-    ];
+    // protected $fillable = [
+    //     'name',
+    //     'email',
+    //     'email',
+    //     'email',
+    //     'points',
+    //     'password',
+    //     'avatar',
+    // ];
 
+    protected $guarded = ['id'];
+    
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -41,8 +46,16 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
+            // 'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
     }
+
+        // Tambahkan accessor untuk foto profil
+    // public function getProfilePictureUrlAttribute()
+    // {
+    //     return $this->profile_picture 
+    //         ? Storage::url($this->profile_picture) 
+    //         : null; // Kembalikan null jika tidak ada foto
+    // }
 }

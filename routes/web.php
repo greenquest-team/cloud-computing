@@ -7,5 +7,5 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    return 'Bersama GreenQuesservet Ayo Hijaukan Dunia!';
+    return 'Bersama GreenQuest Ayo Hijaukan Dunia!';
 });

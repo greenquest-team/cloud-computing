@@ -14,11 +14,14 @@ class WasteTypesSeeder extends Seeder
     public function run(): void
     {
             $wasteTypes = [
-                ['type_name' => 'Plastic'],
-                ['type_name' => 'Glass'],
-                ['type_name' => 'Metal'],
-                ['type_name' => 'Paper'],
-                ['type_name' => 'Organic'],
+                ['type_name' => 'paper'],
+                ['type_name' => 'cardboard'],
+                ['type_name' => 'plastic'],
+                ['type_name' => 'metal'],
+                ['type_name' => 'glass'],
+                ['type_name' => 'trash'],
+                ['type_name' => 'reminder'],
+                ['type_name' => 'quiz'],
             ];
     
             DB::table('waste_types')->insert($wasteTypes);

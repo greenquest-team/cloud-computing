@@ -14,44 +14,50 @@ class QuizController extends Controller
      */
     public function index(Request $request)
     {
-    // Ambil parameter 'type_name' dari query string
-    $typeName = $request->query('type_name');
-
-
-    // Jika typename kosong
-    if (!$typeName) {
-        return ApiFormatter::createApi(404,'no materials found',$typeName);
+        try {
+            // Ambil parameter 'type_name' dari query string
+            $typeName = $request->query('type_name');
+    
+            // Jika type_name kosong
+            if (!$typeName) {
+                return ApiFormatter::createApi(404, 'no waste_type found', $typeName);
+            }
+    
+            // Query untuk mendapatkan materials berdasarkan type_name
+            $quizzes = Quiz::join('waste_types', 'quizzes.waste_types_id', '=', 'waste_types.id')
+                ->when($typeName, function ($query, $typeName) {
+                    return $query->where('waste_types.type_name', $typeName);
+                })
+                ->inRandomOrder()
+                ->limit(2)
+                ->get([
+                    'quizzes.id',
+                    'quizzes.waste_types_id',
+                    'waste_types.type_name',
+                    'quizzes.question',
+                    'quizzes.option_a',
+                    'quizzes.option_b',
+                    'quizzes.option_c',
+                    'quizzes.option_d',
+                    'quizzes.correct_answer',
+                ]);
+    
+            // Cek jika data kosong
+            if ($quizzes->isEmpty()) {
+                return ApiFormatter::createApi(404, 'no quizzes found', $quizzes);
+            }
+    
+            // Response jika data ditemukan
+            return ApiFormatter::createApi(200, 'success', $quizzes);
+    
+        } catch (\Exception $e) {
+            // Log error
+            Log::error('Error fetching quizzes: ' . $e->getMessage());
+    
+            return ApiFormatter::createApi(500, 'An error occurred', $e->getMessage());
+        }
     }
-    // Query untuk mendapatkan materials berdasarkan type_name
-    $quizzes = Quiz::join('waste_types', 'quizzes.waste_types_id', '=', 'waste_types.id')
-        ->when($typeName, function ($query, $typeName) {
-            return $query->where('waste_types.type_name', $typeName);
-        })
-        ->inRandomOrder()
-        ->limit(2) 
-        ->get([
-            'quizzes.id',
-            'quizzes.waste_types_id',
-            'waste_types.type_name',
-            'quizzes.question',
-            'quizzes.option_a',
-            'quizzes.option_b',
-            'quizzes.option_c',
-            'quizzes.option_d',
-            'quizzes.correct_answer',
-        ]);
-
-
-    // Cek jika data kosong
-   
-    if ($quizzes->isEmpty()) {
-        return ApiFormatter::createApi(404,'no quizz$quizzes found',$quizzes);
-    }
-
-
-    // Response jika data ditemukan
-    return ApiFormatter::createApi(200,'success',$quizzes);
-    }
+    
 
     public function getQuiz(Request $request)
     {
@@ -61,15 +67,15 @@ class QuizController extends Controller
         if (!$typeName) {
             return response()->json([
                 'success' => false,
-                'message' => 'type_cname is required.',
+                'message' => 'type_name is required.',
             ], 400);
         }
     
         // Cari maksimal 2 soal berdasarkan type_name
-        $quizzes = Quiz::join('waste_types', 'quizzes.waste_types_id', '=', 'waste_types.waste_types_id')
+        $quizzes = Quiz::join('waste_types', 'quizzes.waste_types_id', '=', 'waste_types.id')
             ->where('waste_types.type_name')
             ->select(
-                'quizzes.quizzes_id',
+                'quizzes.id',
                 'quizzes.question',
                 'quizzes.option_a',
                 'quizzes.option_b',
@@ -83,10 +89,7 @@ class QuizController extends Controller
     
         // Jika quiz tidak ditemukan
         if ($quizzes->isEmpty()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'No quizzes found for the given type_name.',
-            ], 404);
+            return ApiFormatter::createApi(404, 'No quizzes found for the given type_name.',);
         }
     
         // Berikan response quiz
@@ -126,19 +129,18 @@ class QuizController extends Controller
     
             // Total poin
             $pointsAwarded = $correctCount * 50;
-    
-            // Pastikan response dikembalikan
-            return response()->json([
-                'success' => true,
-                'message' => 'Quiz completed!',
+
+            $data=[
                 'correct_answers' => $correctCount,
                 'points_awarded' => $pointsAwarded,
-            ], 200);
+            ];
+    
+            // Pastikan response dikembalikan
+            return ApiFormatter::createApi(200, 'Quiz completed!', $data);
+
         } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'An error occurred.',
-            ], 500);
+
+            return ApiFormatter::createApi(500, 'An error occurred', $e->getMessage());
         }
     }
     

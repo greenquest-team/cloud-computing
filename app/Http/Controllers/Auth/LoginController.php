@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Helper\ApiFormatter;
@@ -17,13 +16,14 @@ class LoginController extends Controller
     {
         try {
             $credentials = $request->validate([
-                'email' => 'required|email',
+                'username' => 'required',
                 'password' => 'required',
             ]);
 
             if (!Auth::attempt($credentials)) {
                 // return response()->json(['message' => 'Unauthorized'], 401);
-            }        
+		 return ApiFormatter::createApi(401,'Unauthorized',null);
+            }
 
             $user = Auth::user();
             $token = $user->createToken('apitrash')->plainTextToken;
@@ -32,7 +32,7 @@ class LoginController extends Controller
                 "user" => $user,
                 ];
             return ApiFormatter::createApi(200,'success',$data);
-            
+
         } catch (\Exception $e) {
             Log::error($e); // Log error untuk diagnosis lebih lanjut
             return response()->json(['message' => 'Internal Server Error'], 500);

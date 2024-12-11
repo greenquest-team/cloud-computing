@@ -3,7 +3,7 @@
 use App\Http\Controllers\Api\WasteTypeController;
 use App\Http\Controllers\Api\MaterialController;
 use App\Http\Controllers\Api\QuestController;
-use App\Http\Controllers\API\QuizController;
+use App\Http\Controllers\Api\QuizController;
 use App\Http\Controllers\Api\UserQuestController;
 use App\Http\Controllers\Api\UserQuizAnswerController as ApiUserQuizAnswerController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -23,11 +23,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Route auth
-Route::post('/register', RegisterController::class);
+Route::post('/register', RegisterController::class,);
 Route::post('/login', LoginController::class);
 Route::post('/logout', LogoutController::class)->middleware('auth:sanctum');
 
-Route::middleware('auth:sanctum')->group(function () {
+// update user
+Route::post('/users/{id}', [RegisterController::class, 'update']);
+
+// Route::middleware('auth:sanctum')->group(function () {
 
 // Route waste-types
 Route::get('/waste-types', [WasteTypeController::class, 'index']);
@@ -37,9 +40,9 @@ Route::get('/waste-types/{id}', [WasteTypeController::class, 'show']);
 Route::get('/materials', [MaterialController::class, 'index']);
 Route::get('/materials/{id}', [MaterialController::class, 'show']);
 
-// ROute Quiz
+// Route Quiz
 Route::get('/quizzes', [QuizController::class, 'index']);
-Route::get('/quizzes/{id}', [QuizController::class, 'getQuiz']);
+// Route::get('/quizzes/{id}', [QuizController::class, 'getQuiz']);
 Route::post('/quizzes/submit', [QuizController::class, 'checkAnswer']);
 
 // Route quest
@@ -56,6 +59,9 @@ Route::prefix('user-progress')->group(function () {
 
 Route::get('/leaderboard', [UserQuestController::class, 'getLeaderboard']);
 
+// Route::post('/user/upload-profile', [UserQuestController::class, 'uploadProfile']);
+
+
 // userquizanswer
 Route::get('/user-quiz-answers', [UserQuizAnswerController::class, 'index']);
 Route::post('/user-quiz-answers', [UserQuizAnswerController::class, 'store']);
@@ -67,4 +73,4 @@ Route::get('/quests/random', [QuestController::class, 'getRandomQuests']);
 Route::get('/hello', function () {
     return 'Hello, Laravel';
 });
-});
+// });

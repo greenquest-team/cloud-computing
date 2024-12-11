@@ -11,5 +11,8 @@ class WasteTypeDetail extends Model
     use HasFactory;
 
     protected $table = 'waste_type_details';
-    protected $fillable = ['waste_types_id', 'description', 'craft'];
+    
+    protected $guarded = ['id'];
+
+    // protected $fillable = ['waste_types_id', 'description', 'craft'];
 }

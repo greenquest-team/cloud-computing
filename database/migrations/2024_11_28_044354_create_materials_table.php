@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('waste_types_id')->constrained('waste_types')->onDelete('cascade');
             $table->text('description_mat')->nullable();
+            $table->text('image')->nullable();
             $table->timestamps();
         });
     }

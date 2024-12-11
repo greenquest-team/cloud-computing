@@ -12,7 +12,9 @@ class CreateUserQuestsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('quest_id')->constrained('quests')->onDelete('cascade');
-            $table->enum('progress_status', ['not_started', 'in_progress', 'completed'])->default('not_started');
+            $table->foreignId('material_id')->constrained('materials')->onDelete('cascade');
+            $table->integer('progress')->default(0);
+            $table->enum('is_completed', ['not_started', 'in_progress', 'completed'])->default('not_started');
             $table->integer('points_awarded')->default(0);
             $table->timestamps();
         });
