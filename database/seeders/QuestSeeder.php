@@ -27,11 +27,16 @@ class QuestSeeder extends Seeder
             ['waste_types_id' => 3, 'description_quest' => 'Yuk belajar tentang sampah plastik!', 'quest_type' => 'material', 'image' => 'https://storage.googleapis.com/greenquest-bucket/image-waste-types/botol2.jpg'],
             ['waste_types_id' => 4, 'description_quest' => 'Yuk belajar tentang sampah metal!', 'quest_type' => 'material', 'image' => 'https://storage.googleapis.com/greenquest-bucket/image-waste-types/metal.jpg'],
             ['waste_types_id' => 5, 'description_quest' => 'Yuk belajar tentang sampah kaca!', 'quest_type' => 'material', 'image' => 'https://storage.googleapis.com/greenquest-bucket/image-waste-types/glass.jpg'],
-
+            
+            // quizz
+            ['waste_types_id' => 1, 'description_quest' => 'Mari Mengerjakan Kuis', 'quest_type' => 'quiz', 'image' => 'https://storage.googleapis.com/greenquest-bucket/image-waste-types/quiz2.png'],     
+            ['waste_types_id' => 2, 'description_quest' => 'Mari Mengerjakan Kuis', 'quest_type' => 'quiz', 'image' => 'https://storage.googleapis.com/greenquest-bucket/image-waste-types/quiz2.png'],     
+            ['waste_types_id' => 3, 'description_quest' => 'Mari Mengerjakan Kuis', 'quest_type' => 'quiz', 'image' => 'https://storage.googleapis.com/greenquest-bucket/image-waste-types/quiz2.png'],     
+            ['waste_types_id' => 4, 'description_quest' => 'Mari Mengerjakan Kuis', 'quest_type' => 'quiz', 'image' => 'https://storage.googleapis.com/greenquest-bucket/image-waste-types/quiz2.png'],     
+            ['waste_types_id' => 5, 'description_quest' => 'Mari Mengerjakan Kuis', 'quest_type' => 'quiz', 'image' => 'https://storage.googleapis.com/greenquest-bucket/image-waste-types/quiz2.png'],     
+            
             // 
             ['waste_types_id' => 7, 'description_quest' => 'Sudahkan Anda membuang atau mendaur ulang sampah hari ini?', 'quest_type' => 'reminder', 'image' => 'https://storage.googleapis.com/greenquest-bucket/image-waste-types/reminder.png'],
-            ['waste_types_id' => 8, 'description_quest' => 'Mari Mengerjakan Kuis', 'quest_type' => 'quiz', 'image' => 'https://storage.googleapis.com/greenquest-bucket/image-waste-types/quiz_1.png'],     
-            
         ]);
     }
 }

@@ -13,23 +13,20 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserQuizAnswerController;
 use App\Models\UserQuest;
+use App\Http\Middleware\EnsureUserIsAuthenticated;
 
-// Route::get('/user', function (Request $request) {
-//     return $request->user();
-// })->middleware('auth:sanctum');
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
 
 // Route auth
 Route::post('/register', RegisterController::class,);
 Route::post('/login', LoginController::class);
 Route::post('/logout', LogoutController::class)->middleware('auth:sanctum');
 
-// update user
-Route::post('/users/{id}', [RegisterController::class, 'update']);
+Route::middleware([EnsureUserIsAuthenticated::class])->group(function () {
 
+
+Route::post('/users/{id}', [RegisterController::class, 'update']);
 // Route::middleware('auth:sanctum')->group(function () {
 
 // Route waste-types
@@ -42,35 +39,19 @@ Route::get('/materials/{id}', [MaterialController::class, 'show']);
 
 // Route Quiz
 Route::get('/quizzes', [QuizController::class, 'index']);
-// Route::get('/quizzes/{id}', [QuizController::class, 'getQuiz']);
 Route::post('/quizzes/submit', [QuizController::class, 'checkAnswer']);
 
 // Route quest
 Route::get('/quests', [QuestController::class,'index']);
-// Route::get('/quests', [QuestController::class,'getQuestsByType']);
-Route::post('/quests', [QuestController::class, 'store']);
 
-Route::prefix('user-progress')->group(function () {
-    Route::get('/{userId}', [UserQuestController::class, 'index']);
-    Route::post('/start', [UserQuestController::class, 'startQuest']);
-    Route::post('/complete', [UserQuestController::class, 'completeQuest']);
-    Route::get('/{userId}/{status}', [UserQuestController::class, 'getProgressByStatus']);
-});
 
 Route::get('/leaderboard', [UserQuestController::class, 'getLeaderboard']);
 
-// Route::post('/user/upload-profile', [UserQuestController::class, 'uploadProfile']);
-
-
-// userquizanswer
-Route::get('/user-quiz-answers', [UserQuizAnswerController::class, 'index']);
-Route::post('/user-quiz-answers', [UserQuizAnswerController::class, 'store']);
-
-Route::get('/quests/random', [QuestController::class, 'getRandomQuests']);
-
-
-
 Route::get('/hello', function () {
     return 'Hello, Laravel';
+    });
 });
-// });
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});

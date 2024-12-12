@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helper\ApiFormatter;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,6 @@ class LogoutController extends Controller
         //
         $request->user()->currentAccessToken()->delete();
 
-        return response()->json(['message' => 'Successfully logout']);
+        return ApiFormatter::createApi(200, 'Successfully logged out', null);
     }
 }

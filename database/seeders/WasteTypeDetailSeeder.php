@@ -20,6 +20,11 @@ class WasteTypeDetailSeeder extends Seeder
                 'craft' => 'Kertas koran bekas yang biasanya hanya berakhir di tempat sampah dapat dilipat menjadi kotak penyimpanan kecil untuk barang-barang seperti perhiasan atau kunci.'
             ],
             [
+                'waste_types_id' => 1, // Paper
+                'description' => 'Tahukah kamu? Limbah kertas yang didaur ulang dapat menghemat hingga 60% energi dibandingkan dengan membuat kertas baru dari bahan mentah.',
+                'craft' => 'Buku bekas yang sudah tidak terpakai bisa diubah menjadi karya seni pop-up atau diukir untuk membuat bentuk 3D seperti siluet hewan atau tanaman.'
+            ],
+            [
                 'waste_types_id' => 2, // Cardboard
                 'description' => 'Kardus merupakan salah satu jenis sampah yang paling banyak didaur ulang. Tingkat daur ulang globalnya mencapai 85% loh!',
                 'craft' => 'Dengan sedikit imajinasi dan keterampilan, kardus bekas dapat dijadikan miniatur bangunan atau rumah mainan untuk anak-anak.'

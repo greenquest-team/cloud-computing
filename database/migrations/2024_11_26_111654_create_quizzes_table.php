@@ -12,6 +12,7 @@ class CreateQuizzesTable extends Migration
             $table->id();
             $table->foreignId('waste_types_id')->constrained('waste_types')->onDelete('cascade');
             $table->text('question');
+            $table->string('image');
             $table->string('option_a');
             $table->string('option_b');
             $table->string('option_c');
