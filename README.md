@@ -14,14 +14,14 @@
 - Cloud Storage
 
 ## Endpoint Routes
-|      ENDPOINTS      | METHOD |          ACTION          |     AUTH     |   |
-|:-------------------:|:------:|:------------------------:|:------------:|---|
-| /api/login          | POST   | user login               | Not required |   |
-| /api/register       | POST   | user register            | Not required |   |
-| /api/logout         | POST   | user logout              | Required     |   |
-| /api/waste-types    | GET    | get type of waste        | Required     |   |
-| /api/materials      | GET    | get material description | Required     |   |
-| /api/quests         | GET    | get quests for user      | Required     |   |
-| /api/quizzes        | GET    | get quizzes              | Required     |   |
-| /api/quizzes/submit | POST   | submit quizzes           | Required     |   |
-| /api/leaderboard    | GET    | get leaderboard          | Required     |   |
+|      ENDPOINTS      | METHOD |          ACTION          |     AUTH     |   
+|:-------------------:|:------:|:------------------------:|:------------:|
+| /api/login          | POST   | user login               | Not required |   
+| /api/register       | POST   | user register            | Not required |   
+| /api/logout         | POST   | user logout              | Required     |   
+| /api/waste-types    | GET    | get type of waste        | Required     |   
+| /api/materials      | GET    | get material description | Required     |   
+| /api/quests         | GET    | get quests for user      | Required     |   
+| /api/quizzes        | GET    | get quizzes              | Required     |   
+| /api/quizzes/submit | POST   | submit quizzes           | Required     |   
+| /api/leaderboard    | GET    | get leaderboard          | Required     |
