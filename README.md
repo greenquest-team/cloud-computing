@@ -6,3 +6,8 @@
 ## Entity Relationship Diagram
 ![Database ER diagram](https://github.com/user-attachments/assets/24c3fcee-37ec-43b6-a3e1-1b1435a4b13b)
 
+## Tech Architecture
+- PHP
+- Laravel
+- Cloud SQL
+- Cloud Storage
