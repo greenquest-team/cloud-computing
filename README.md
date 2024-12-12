@@ -15,7 +15,7 @@
 
 ## Endpoint Routes
 |      ENDPOINTS      | METHOD |          ACTION          |     AUTH     |   
-|---------------------|:------:|:------------------------:|:------------:|
+|---------------------|:------:|--------------------------|:------------:|
 | /api/login          | POST   | user login               | Not required |   
 | /api/register       | POST   | user register            | Not required |   
 | /api/logout         | POST   | user logout              | Required     |   
