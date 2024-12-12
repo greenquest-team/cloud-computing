@@ -15,27 +15,34 @@ class LoginController extends Controller
     public function __invoke(Request $request)
     {
         try {
-            $credentials = $request->validate([
+            $request->validate([
                 'username' => 'required',
                 'password' => 'required',
             ]);
-
-            if (!Auth::attempt($credentials)) {
-                // return response()->json(['message' => 'Unauthorized'], 401);
-		 return ApiFormatter::createApi(401,'Unauthorized',null);
+    
+            if (!$request->filled(['username', 'password'])) {
+                return ApiFormatter::createApi(400, 'Bad Request', 'All fields are required.');
             }
-
+    
+            $credentials = $request->only('username', 'password');
+    
+            if (!Auth::attempt($credentials)) {
+                return ApiFormatter::createApi(401, 'Username atau Password salah', null);
+            }
+    
             $user = Auth::user();
             $token = $user->createToken('apitrash')->plainTextToken;
             $data = [
                 "token" => $token,
                 "user" => $user,
-                ];
-            return ApiFormatter::createApi(200,'success',$data);
-
+            ];
+    
+            return ApiFormatter::createApi(200, 'Success', $data);
+    
         } catch (\Exception $e) {
-            Log::error($e); // Log error untuk diagnosis lebih lanjut
-            return response()->json(['message' => 'Internal Server Error'], 500);
+            Log::error($e->getMessage()); 
+            return ApiFormatter::createApi(500, $e->getMessage(), $e->getMessage());
         }
-    }    
+    }
+       
 }

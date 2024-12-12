@@ -34,6 +34,7 @@ class QuizController extends Controller
                     'quizzes.id',
                     'quizzes.waste_types_id',
                     'waste_types.type_name',
+                    'quizzes.image',
                     'quizzes.question',
                     'quizzes.option_a',
                     'quizzes.option_b',
@@ -57,57 +58,15 @@ class QuizController extends Controller
             return ApiFormatter::createApi(500, 'An error occurred', $e->getMessage());
         }
     }
-    
-
-    public function getQuiz(Request $request)
-    {
-        $typeName = $request->input('type_name'); // Ambil parameter type_name
-    
-        // Validasi input type_name
-        if (!$typeName) {
-            return response()->json([
-                'success' => false,
-                'message' => 'type_name is required.',
-            ], 400);
-        }
-    
-        // Cari maksimal 2 soal berdasarkan type_name
-        $quizzes = Quiz::join('waste_types', 'quizzes.waste_types_id', '=', 'waste_types.id')
-            ->where('waste_types.type_name')
-            ->select(
-                'quizzes.id',
-                'quizzes.question',
-                'quizzes.option_a',
-                'quizzes.option_b',
-                'quizzes.option_c',
-                'quizzes.option_d',
-                'quizzes.correct_answer',
-                'waste_types.type_name'
-            )
-            ->limit(2) // Batasi hanya 4 soal
-            ->get();
-    
-        // Jika quiz tidak ditemukan
-        if ($quizzes->isEmpty()) {
-            return ApiFormatter::createApi(404, 'No quizzes found for the given type_name.',);
-        }
-    
-        // Berikan response quiz
-        return response()->json([
-            'success' => true,
-            'data' => $quizzes,
-        ], 200);
-    }
-    
+        
     public function checkAnswer(Request $request)
     {
         try {
             // Validasi input
             $request->validate([
                 'type_name' => 'required|string',
-                'answers' => 'required|array',
-                'answers.*.quiz_id' => 'required|integer',
-                'answers.*.selected_answer' => 'required|string',
+                'answers' => 'required|array|min:1',
+                'answers.*' => 'required|string',
             ]);
     
             $typeName = $request->input('type_name');
@@ -115,34 +74,36 @@ class QuizController extends Controller
     
             $correctCount = 0;
     
-            foreach ($answers as $answer) {
-                $quiz = Quiz::join('waste_types', 'quizzes.waste_types_id', '=', 'waste_types.id')
-                    ->where('quizzes.id', $answer['quiz_id'])
+            // Loop setiap jawaban
+            foreach ($answers as $selectedAnswer) {
+                $isCorrect = Quiz::join('waste_types', 'quizzes.waste_types_id', '=', 'waste_types.id')
                     ->where('waste_types.type_name', $typeName)
-                    ->select('quizzes.correct_answer')
-                    ->first();
+                    ->where('quizzes.correct_answer', $selectedAnswer)
+                    ->exists();
     
-                if ($quiz && $answer['selected_answer'] === $quiz->correct_answer) {
+                if ($isCorrect) {
                     $correctCount++;
                 }
             }
     
-            // Total poin
-            $pointsAwarded = $correctCount * 50;
-
-            $data=[
+            // Hitung total poin
+            $pointsAwarded = $correctCount * 20;
+    
+            // Data untuk response
+            $data = [
                 'correct_answers' => $correctCount,
                 'points_awarded' => $pointsAwarded,
             ];
     
-            // Pastikan response dikembalikan
             return ApiFormatter::createApi(200, 'Quiz completed!', $data);
-
+    
         } catch (\Exception $e) {
-
             return ApiFormatter::createApi(500, 'An error occurred', $e->getMessage());
         }
     }
+    
+    
+    
     
     
     

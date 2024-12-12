@@ -23,13 +23,29 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $defaultAvatars = [
+            'https://storage.googleapis.com/greenquest-bucket/avatars/plants.png',
+            'https://storage.googleapis.com/greenquest-bucket/avatars/smile-earth.png',
+            'https://storage.googleapis.com/greenquest-bucket/avatars/trash-can.png',
+            'https://storage.googleapis.com/greenquest-bucket/avatars/duckiey.png',
+            'https://storage.googleapis.com/greenquest-bucket/avatars/bunny.png',
+            'https://storage.googleapis.com/greenquest-bucket/avatars/garbage-bin.png',
+        ];
+
+        $avatar = $defaultAvatars[array_rand($defaultAvatars)]; // Pilih avatar default secara acak
+
         return [
             'name' => fake()->name(),
+            'username' => fake()->username(),
+            'tgl_lahir' => fake()->date(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
+            'points' => fake()->numberBetween(3, 20) * 5,
+            'avatar' => $avatar,
             'remember_token' => Str::random(10),
         ];
+
     }
 
     /**
