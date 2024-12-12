@@ -9,5 +9,6 @@
 ## Tech Architecture
 - PHP
 - Laravel
+- Compute Engine
 - Cloud SQL
 - Cloud Storage
