@@ -25,9 +25,7 @@ Route::post('/logout', LogoutController::class)->middleware('auth:sanctum');
 
 Route::middleware([EnsureUserIsAuthenticated::class])->group(function () {
 
-
 Route::post('/users/{id}', [RegisterController::class, 'update']);
-// Route::middleware('auth:sanctum')->group(function () {
 
 // Route waste-types
 Route::get('/waste-types', [WasteTypeController::class, 'index']);
