@@ -18,20 +18,20 @@ class DatabaseSeeder extends Seeder
             'username' => 'agus',
             'email' => 'test@example.com',
             'tgl_lahir' => '10/10/2004',
-            'points' => '75',
+            'points' => '60',
             'password' => 'ayampos1',
             'avatar' => 'https://storage.googleapis.com/greenquest-bucket/avatars/plants.png'
         ]);
 
         User::factory()->create([
 
-            'name' => 'aizen',
-            'username' => 'aizen',
+            'name' => 'zoya nujula',
+            'username' => 'zoya',
             'email' => 'bebek1@example.com',
             'tgl_lahir' => '10/10/2004',
-            'password' => 'satirbeliau',
-            'points' => '85',
-            'avatar' => 'https://assets.ggwp.id/2022/07/fakta-sosuke-aizen-featured-640x360.jpg',
+            'password' => 'zoyzoyzoy',
+            'points' => '50',
+            'avatar' => 'https://storage.googleapis.com/greenquest-bucket/avatars/smile-earth.png',
         ]);
 
         $this->call([
