@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
             'tgl_lahir' => '10/10/2004',
             'points' => '60',
-            'password' => 'ayampos1',
             'avatar' => 'https://storage.googleapis.com/greenquest-bucket/avatars/plants.png'
         ]);
 
@@ -29,7 +28,6 @@ class DatabaseSeeder extends Seeder
             'username' => 'zoya',
             'email' => 'bebek1@example.com',
             'tgl_lahir' => '10/10/2004',
-            'password' => 'zoyzoyzoy',
             'points' => '50',
             'avatar' => 'https://storage.googleapis.com/greenquest-bucket/avatars/smile-earth.png',
         ]);
