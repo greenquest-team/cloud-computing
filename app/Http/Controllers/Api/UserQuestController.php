@@ -22,16 +22,10 @@ class UserQuestController extends Controller
             ->get();
 
         if ($progress->isEmpty()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'No progress found for this user.',
-            ], 404);
+            return ApiFormatter::createApi(404, 'No progress found for this user.', null);
         }
 
-        return response()->json([
-            'success' => true,
-            'data' => $progress,
-        ]);
+        return ApiFormatter::createApi(200, 'Successfully logged out', $progress);
     }
 
 
@@ -84,16 +78,10 @@ public function getProgressByStatus(Request $request, $userId, $status)
         ->get();
 
     if ($progress->isEmpty()) {
-        return response()->json([
-            'success' => false,
-            'message' => 'No progress found for the given status.',
-        ], 404);
+        return ApiFormatter::createApi(404, 'No progress found for the given status.', null);
     }
 
-    return response()->json([
-        'success' => true,
-        'data' => $progress,
-    ]);
+    return ApiFormatter::createApi(200, 'Successfully', $progress);
 }
 
 public function getLeaderboard(Request $request)
@@ -101,44 +89,14 @@ public function getLeaderboard(Request $request)
     $limit = $request->get('limit', 10); // Default top 10
     
     // Ambil data user berdasarkan poin, urutkan dari yang terbesar
-    $leaderboard = User::select('id', 'username', 'points')
-        ->orderBy('points', 'desc')
+
+    $leaderboard = User::select('id', 'username', 'points', 'avatar')
+        ->orderByRaw('CAST(points AS UNSIGNED) DESC')
         ->limit($limit)
         ->get();
 
     return ApiFormatter::createApi(200, 'Leaderboard fetched successfully.', $leaderboard);
 }
-
-// public function uploadProfile(Request $request)
-// {
-//     // Validasi input
-//     $request->validate([
-//         'profile_picture' => 'required|image|mimes:jpeg,png,jpg|max:2048', // Maksimum 2MB
-//     ]);
-
-//     // $user = auth()->user(); // Dapatkan user saat ini
-
-//     // Upload file
-//     if ($request->hasFile('profile_picture')) {
-//         // Simpan file ke direktori 'profile_pictures'
-//         $path = $request->file('profile_picture')->store('profile_pictures', 'public');
-
-//         // Hapus file lama jika ada
-//         if ($user->profile_picture) {
-//             Storage::disk('public')->delete($user->profile_picture);
-//         }
-
-//         // Simpan path ke database
-//         $user->update(['profile_picture' => $path]);
-
-//         return ApiFormatter::createApi(200, 'Profile picture uploaded successfully.', [
-//             'profile_picture_url' => Storage::url($path),
-//         ]);
-//     }
-
-//     return ApiFormatter::createApi(400, 'Profile picture upload failed.');
-// }
-
 
     /**
      * Store a newly created resource in storage.

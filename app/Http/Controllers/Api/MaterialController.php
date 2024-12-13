@@ -15,17 +15,12 @@ class MaterialController extends Controller
      */
     public function index(Request $request)
     {
-    // Ambil parameter 'type_name' dari query string
     $typeName = $request->query('type_name');
 
-    // Jika typename kosong
-    if (!$typeName) {
-        return ApiFormatter::createApi(404,'no materials found',$typeName);
-    }
     // Query untuk mendapatkan materials berdasarkan type_name
     $materials = Material::join('waste_types', 'materials.waste_types_id', '=', 'waste_types.id')
-        ->when($typeName, function ($query, $typeName) {
-            return $query->where('waste_types.type_name', $typeName);
+        ->when($typeName, function ($query, $materials) {
+            return $query->where('waste_types.type_name', $materials);
         })
         ->inRandomOrder()
         ->limit(1)
@@ -38,14 +33,13 @@ class MaterialController extends Controller
         ]);
 
     // Cek jika data kosong
-    
-    if ($materials->isEmpty()) {
-        return ApiFormatter::createApi(404,'no materials found',$materials);
-    }
+        if ($materials->isEmpty()) {
+            return ApiFormatter::createApi(404,'no materials found',$materials);
+        }
 
-    // Response jika data ditemukan
-    return ApiFormatter::createApi(200,'success',$materials);
-    }
+        // Response jika data ditemukan
+            return ApiFormatter::createApi(200,'success',$materials);
+        }
 
     /**
      * Store a newly created resource in storage.
@@ -60,21 +54,7 @@ class MaterialController extends Controller
      */
     public function show($waste_type_id)
     {
-        $materials = Material::where('waste_types_id', $waste_type_id)
-        ->with('wasteType:id,type_name')
-        ->get(['id', 'waste_types_id', 'description_mat']);
-
-    if ($materials->isEmpty()) {
-        return response()->json([
-            'success' => false,
-            'message' => 'No materials found for the given waste type ID.',
-        ], 404);
-    }
-
-    return response()->json([
-        'success' => true,
-        'data' => $materials,
-    ], 200);
+        //
     }
     
 

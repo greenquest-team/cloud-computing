@@ -13,55 +13,34 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-        $avatar = 'https://storage.googleapis.com/greenquest-bucket/avatars/plants.png';
-
         User::factory()->create([
             'name' => 'Agus Scavenger',
             'username' => 'agus',
-            'email' => 'agus@example.com',
+            'email' => 'test@example.com',
             'tgl_lahir' => '10/10/2004',
-            'points' => rand(0, 100),
-            'password' => 'ayampos',
-            'avatar' => $avatar,
+            'points' => '60',
+            'password' => 'ayampos1',
+            'avatar' => 'https://storage.googleapis.com/greenquest-bucket/avatars/plants.png'
         ]);
 
         User::factory()->create([
-            'name' => 'ricko',
-            'username' => 'ricko',
-            'email' => 'ayam@example.com',
-            'tgl_lahir' => '10/10/2004',
-            'points' => rand(0, 100),
-            'avatar' => $avatar
 
-        ]);
-        User::factory()->create([
-            'name' => 'Junai',
-            'username' => 'Junai',
-            'email' => 'bebek12@example.com',
-            'tgl_lahir' => '10/10/2004',
-            'points' => rand(0, 100),
-            'avatar' => $avatar
-
-            
-        ]);
-        User::factory()->create([
-            'name' => 'Junaihaha',
-            'username' => 'Junia',
+            'name' => 'zoya nujula',
+            'username' => 'zoya',
             'email' => 'bebek1@example.com',
             'tgl_lahir' => '10/10/2004',
-            'points' => rand(0, 100),
-            'avatar' => $avatar
-
+            'password' => 'zoyzoyzoy',
+            'points' => '50',
+            'avatar' => 'https://storage.googleapis.com/greenquest-bucket/avatars/smile-earth.png',
         ]);
 
         $this->call([
+            UserSeeder::class,
             WasteTypesSeeder::class,
             WasteTypeDetailSeeder::class,
             MaterialSeeder::class,
             QuizSeeder::class,
             QuestSeeder::class,
-            // UserQuestSeeder::class,
         ]);
         
     }

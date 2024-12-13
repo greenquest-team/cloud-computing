@@ -21,15 +21,26 @@ class RegisterController extends Controller
                 'password' => 'required|string|min:8',
                 'tgl_lahir' => 'required',
                 'points' => 'nullable',
-                'avatar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Optional avatar upload
+                'avatar' => 'nullable', // Optional avatar upload
+                // 'avatar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Optional avatar upload
             ]);
     
-            // Proses penyimpanan avatar (jika ada)
-            $avatarPath = null;
+            // Daftar URL avatar default
+            $defaultAvatars = [
+                'https://storage.googleapis.com/greenquest-bucket/avatars/plants.png',
+                'https://storage.googleapis.com/greenquest-bucket/avatars/smile-earth.png',
+                'https://storage.googleapis.com/greenquest-bucket/avatars/trash-can.png',
+                'https://storage.googleapis.com/greenquest-bucket/avatars/sapi.png',                
+                'https://storage.googleapis.com/greenquest-bucket/avatars/duckiey.png',
+                'https://storage.googleapis.com/greenquest-bucket/avatars/bunny.png',
+                'https://storage.googleapis.com/greenquest-bucket/avatars/garbage-bin.png',
+            ];
+    
+            // Proses penyimpanan avatar (jika ada) atau pilih avatar default secara acak
             if ($request->hasFile('avatar')) {
                 $avatarPath = $request->file('avatar')->store('avatars', 'public');
             } else {
-                $avatarPath = 'https://storage.googleapis.com/greenquest-bucket/avatars/plants.png'; // Default avatar
+                $avatarPath = $defaultAvatars[array_rand($defaultAvatars)]; // Pilih avatar default secara acak
             }
     
             // Buat user baru
@@ -44,102 +55,88 @@ class RegisterController extends Controller
     
             if ($user->save()) {
                 // Return response JSON
-                return response()->json([
-                    'message' => 'Registration successful',
-                    'user' => [
-                        'id' => $user->id,
-                        'name' => $user->name,
-                        'username' => $user->username,
-                        'email' => $user->email,
-                        'tgl_lahir' => $user->tgl_lahir,
-                        'points' => $user->points,
-                        'avatar' => asset('storage/' . $avatarPath), // Use asset helper for URL
-                    ],
+                return ApiFormatter::createApi(201, 'Registration successful', [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'username' => $user->username,
+                    'email' => $user->email,
+                    'tgl_lahir' => $user->tgl_lahir,
+                    'password' => $user->password,
+                    'points' => $user->points,
+                    'avatar' => $avatarPath, // Avatar URL
                 ]);
             } else {
-                return response()->json([
-                    'message' => 'Registration failed',
-                ], 401);
+                return ApiFormatter::createApi(401, 'Registration failed');
             }
         } catch (\Illuminate\Validation\ValidationException $e) {
-            return response()->json([
-                'message' => 'Validation error',
-                'errors' => $e->errors(),
-            ], 422);
+            return ApiFormatter::createApi(422, 'Validation error', $e->errors());
         } catch (Exception $error) {
-            return response()->json([
-                'message' => 'An error occurred during registration',
-                'error' => $error->getMessage(),
-            ], 500);
+            return ApiFormatter::createApi(500, 'An error occurred during registration', $error->getMessage());
         }
     }
     
     
-    public function update(Request $request, $id)
-    {
-        try {
-            $validatedData = $request->validate([
-                'name' => 'nullable|string|max:255',
-                'username' => 'nullable|string|max:255|unique:users,username,' . $id,
-                'email' => 'nullable|email|max:255|unique:users,email,' . $id,
-                'password' => 'nullable|string|min:8',
-                'tgl_lahir' => 'nullable',
-                'points' => 'nullable', // Allowing points to be nullable
-                'avatar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+    
+public function update(Request $request, $id)
+{
+    try {
+        $validatedData = $request->validate([
+            'name' => 'nullable|string|max:255',
+            'username' => 'nullable|string|max:255|unique:users,username,' . $id,
+            'email' => 'nullable|email|max:255|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:8',
+            'tgl_lahir' => 'nullable',
+            'points' => 'nullable', // Allowing points to be nullable
+            'avatar' => 'nullable|string', // Allow text input for avatar
+        ]);
+
+        // Default avatar if not provided
+        $avatarPath = 'https://storage.googleapis.com/greenquest-bucket/avatars/plants.png';
+        if ($request->hasFile('avatar')) {
+            $avatarPath = $request->file('avatar')->store('avatars', 'public');
+        } elseif ($request->input('avatar')) {
+            $avatarPath = $request->input('avatar');
+        }
+
+        // Find user to update
+        $user = User::findOrFail($id);
+
+        // Update avatar if file provided
+        if ($request->hasFile('avatar')) {
+            $avatarPath = $request->file('avatar')->store('avatars', 'public');
+            $user->avatar = $avatarPath;
+        } elseif ($request->input('avatar')) {
+            $user->avatar = $request->input('avatar');
+        }
+
+        // Update user data
+        if (!empty($validatedData['name'])) $user->name = $validatedData['name'];
+        if (!empty($validatedData['username'])) $user->username = $validatedData['username'];
+        if (!empty($validatedData['email'])) $user->email = $validatedData['email'];
+        if (!empty($validatedData['password'])) $user->password = bcrypt($validatedData['password']);
+        if (!empty($validatedData['tgl_lahir'])) $user->tgl_lahir = $validatedData['tgl_lahir'];
+        if (!empty($validatedData['points'])) $user->points = $validatedData['points']; // Updating points
+
+        if ($user->save()) {
+            return ApiFormatter::createApi(200, 'Update successful', [
+                'id' => $user->id,
+                'name' => $user->name,
+                'username' => $user->username,
+                'email' => $user->email,
+                'tgl_lahir' => $user->tgl_lahir,
+                'password' => $user->password,
+                'points' => $user->points,
+                'avatar' => $user->avatar ? $user->avatar : null,
             ]);
-            if ($request->hasFile('avatar')) {
-                $avatarPath = $request->file('avatar')->store('avatars', 'public');
-            } else {
-                $avatarPath = 'https://storage.googleapis.com/greenquest-bucket/avatars/plants.png'; // Default avatar
-            }
-
-            // Cari user yang akan di-update
-            $user = User::findOrFail($id);
-
-            // Proses penyimpanan avatar (jika ada)
-            if ($request->hasFile('avatar')) {
-                $avatarPath = $request->file('avatar')->store('avatars', 'public');
-                $user->avatar = $avatarPath;
-            }
-
-            // Update data user
-            if (!empty($validatedData['name'])) $user->name = $validatedData['name'];
-            if (!empty($validatedData['username'])) $user->username = $validatedData['username'];
-            if (!empty($validatedData['email'])) $user->email = $validatedData['email'];
-            if (!empty($validatedData['password'])) $user->password = bcrypt($validatedData['password']);
-            if (!empty($validatedData['tgl_lahir'])) $user->tgl_lahir = $validatedData['tgl_lahir'];
-            if (!empty($validatedData['points'])) $user->points = $validatedData['points']; // Updating points
-
-            if ($user->save()) {
-                // Return response JSON
-                return response()->json([
-                    'message' => 'Update successful',
-                    'user' => [
-                        'id' => $user->id,
-                        'name' => $user->name,
-                        'username' => $user->username,
-                        'email' => $user->email,
-                        'tgl_lahir' => $user->tgl_lahir,
-                        'points' => $user->points,
-                        'avatar' => $user->avatar ? asset('storage/' . $user->avatar) : null,
-                    ],
-                ]);
-            } else {
-                return response()->json([
-                    'message' => 'Update failed',
-                ], 401);
-            }
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            return response()->json([
-                'message' => 'Validation error',
-                'errors' => $e->errors(),
-            ], 422);
-        } catch (Exception $error) {
-            return response()->json([
-                'message' => 'An error occurred during update',
-                'error' => $error->getMessage(),
-            ], 500);
+        } else {
+            return ApiFormatter::createApi(401, 'Update failed', null);
         }
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        return ApiFormatter::createApi(422, 'Validation error', $e->errors());
+    } catch (Exception $error) {
+        return ApiFormatter::createApi(500, 'An error occurred during update', $error->getMessage());
     }
+}
+
         
 }
